@@ -1,15 +1,4 @@
-var canvas = document.createElement('canvas');
-canvas.id = "line-chart";
-canvas.width = 800;
-canvas.height = 400;
-canvas.style.zIndex = 8;
-canvas.style.position = "absolute";
-canvas.style.border = "1px solid";
-
-var body = document.getElementsByTagName("body")[0];
-body.appendChild(canvas);
-
-var ctx = canvas.getContext('2d');
+var ctx = document.getElementsById("line-chart").getContext('2d');
 var myChart = new Chart(ctx, {
   type: 'line',
   data: {
