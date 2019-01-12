@@ -3,7 +3,7 @@ canvas.id = "line-chart";
 canvas.width = 800;
 canvas.height = 400;
 
-var ctx = document.getElementById("line-chart").getContext('2d');
+var ctx = canvas.getContext('2d');
 var myChart = new Chart(ctx, {
   type: 'line',
   data: {
