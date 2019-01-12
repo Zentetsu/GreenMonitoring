@@ -4,10 +4,10 @@ from time import sleep
 
 if __name__ == "__main__":
     soil_moisture = SoilMoisture(21)
-    gas = Gas(11)
+    #gas = Gas(11)
 
     soil_moisture.start()
-    gas.start()
+    #gas.start()
 
     for i in range(10):
         sleep(1)
