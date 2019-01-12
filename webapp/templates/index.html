@@ -1,7 +1,7 @@
 <canvas id="line-chart" width="800" height="450"></canvas>
 <script>
-var ctx = document.getElementById("myChart").getContext('2d');
-new Chart(document.getElementById("line-chart"), {
+var ctx = document.getElementById("line-chart").getContext('2d');
+var myChart = new Chart(ctx, {
   type: 'line',
   data: {
     labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
