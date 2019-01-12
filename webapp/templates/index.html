@@ -1,4 +1,6 @@
 <canvas id="line-chart" width="800" height="450"></canvas>
+<script>
+var ctx = document.getElementById("myChart").getContext('2d');
 new Chart(document.getElementById("line-chart"), {
   type: 'line',
   data: {
@@ -38,3 +40,4 @@ new Chart(document.getElementById("line-chart"), {
     }
   }
 });
+</script>
