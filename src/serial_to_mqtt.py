@@ -3,6 +3,7 @@ import paho.mqtt.client as mqtt
 import time
 from math import pow
 from collections import deque
+from random import random
 
 
 def convert_temperature(analog_value):
@@ -44,9 +45,9 @@ while True:
 client = mqtt.Client('raspy_home')
 client.connect('iot.eclipse.org')
 while True:
-    client.publish('/home/plant1/sensor/moisture', '0.5')
-    client.publish('/home/plant1/sensor/temperature', '0.5')
-    client.publish('/home/plant1/sensor/luminosity1', '0.5')
-    client.publish('/home/plant1/sensor/luminosity2', '0.5')
-    client.publish('/home/plant1/sensor/carbon_monoxyde', '0.5')
-    time.sleep(.5)
+    client.publish('/home/plant1/sensor/moisture', 0.5 + random()*0.05)
+    client.publish('/home/plant1/sensor/temperature', 14 + random())
+    client.publish('/home/plant1/sensor/luminosity1', 25 + 3*random())
+    client.publish('/home/plant1/sensor/luminosity2', 18 + 5*random())
+    client.publish('/home/plant1/sensor/carbon_monoxyde', 0.5 + random()*0.05)
+    time.sleep(1)
