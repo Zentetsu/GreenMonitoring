@@ -1,16 +1,13 @@
 var ctxw = document.getElementById("line-chart-water").getContext('2d');
 var water_chart = new Chart(ctxw, {
   type: 'line',
-  scaleSteps : 10,
-  scaleStepWidth : 50,
-  scaleStartValue : 0,
   data: {
-    labels: [],
+    labels: [...Array(30).keys()],
     datasets: [{ 
         data: [],
-        label: "Soil Moisture",
+        label: "Soil Moisture (%)",
         borderColor: "#3e95cd",
-        fillColor : 'rgba(62, 149, 205, 0.5)'
+        backgroundColor : "rgba(62, 149, 205, 0.2)",
       }
     ]
   },
@@ -25,7 +22,10 @@ var water_chart = new Chart(ctxw, {
                   stepValue: 1,
                   max: 1
               }
-          }]
+          }],
+      xAxes: [{
+        display: false,
+    }]
     },
   }
 });
@@ -34,22 +34,28 @@ var ctxl = document.getElementById("line-chart-light").getContext('2d');
 var light_chart = new Chart(ctxl, {
   type: 'line',
   data: {
-    labels: [],
+    labels: [...Array(30).keys()],
     datasets: [{ 
         data: [],
-        label: "sensor 1",
+        label: "Light (lx) from sensor 1",
         borderColor: "#ffcc00",
-        fillColor : 'rgba(62, 149, 205, 0.5)'
+        backgroundColor : 'rgba(255, 204, 0, 0.2)'
       },
       { 
         data: [],
-        label: "sensor 2",
+        label: "Light (lx) from sensor 2",
         borderColor: "#FFA500",
-        fillColor : 'rgba(62, 149, 205, 0.5)'
+        backgroundColor : 'rgba(255, 165, 0, 0.2)'
       }
     ]
   },
   options: {
+    responsive: true,
+    scales: {
+      xAxes: [{
+        display: false,
+      }]
+    },
   }
 });
 
@@ -57,16 +63,31 @@ var ctxg = document.getElementById("line-chart-gaz").getContext('2d');
 var temperature_chart = new Chart(ctxg, {
   type: 'line',
   data: {
-    labels: [],
+    labels: [...Array(30).keys()],
     datasets: [{ 
         data: [],
-        label: "Africa",
+        label: "Temperature (C°)",
         borderColor: "#A30000",
-        fill: false
+        backgroundColor: "rgba(163, 0, 0, 0.2)"
       }
     ]
   },
   options: {
+    responsive: true,
+    scales: {
+      yAxes: [{
+              display: true,
+              ticks: {
+                  min: -5,
+                  steps: 1,
+                  stepValue: 1,
+                  max: 25
+              }
+      }],
+      xAxes: [{
+        display: false,
+      }]
+    },
   }
 });
 
@@ -74,12 +95,12 @@ var ctxt = document.getElementById("line-chart-temperature").getContext('2d');
 var gaz_chart = new Chart(ctxt, {
   type: 'line',
   data: {
-    labels: [],
+    labels: [...Array(30).keys()],
     datasets: [{ 
         data: [],
-        label: "Africa",
+        label: "Carbon Monoxyde (%)",
         borderColor: "#00B259",
-        fill: false
+        backgroundColor: "rgba(0, 178, 89, 0.2)"
       }
     ]
   },
@@ -94,7 +115,10 @@ var gaz_chart = new Chart(ctxt, {
                   stepValue: 1,
                   max: 1
               }
-          }]
+          }],
+      xAxes: [{
+        display: false,
+    }]
     },
   }
 });
@@ -128,9 +152,7 @@ function onConnectionLost(responseObject) {
   }
 }
 
-var xVal = 0;
-var yVal = 100; 
-var dataLength = 50; // number of dataPoints visible at any point
+var dataLength = 30; // number of dataPoints visible at any point
 
 // called when a message arrives
 function onMessageArrived(message) {
@@ -138,11 +160,9 @@ function onMessageArrived(message) {
   console.log("onMessageArrived:"+message.destinationName);
 
   if (message.destinationName == "/home/plant1/sensor/moisture" ){
+    document.getElementById("moisture-value").innerHTML = (parseFloat(message.payloadString)*100).toFixed(2) + "%";
     water_chart.data.datasets[0].data.push(parseFloat(message.payloadString));
-    water_chart.data.labels.push(xVal)
-    xVal++;
-    if (water_chart.data.labels.length > dataLength) {
-      water_chart.data.labels.shift()
+    if (water_chart.data.datasets[0].data.length > dataLength) {
       water_chart.data.datasets[0].data.shift();
     }
     water_chart.update();
@@ -150,10 +170,7 @@ function onMessageArrived(message) {
 
   else if (message.destinationName == "/home/plant1/sensor/luminosity1" ){
     light_chart.data.datasets[0].data.push(parseFloat(message.payloadString));
-    light_chart.data.labels.push(xVal)
-    //xVal++;
-    if (light_chart.data.labels.length > dataLength) {
-      light_chart.data.labels.shift()
+    if (light_chart.data.datasets[0].data.length > dataLength) {
       light_chart.data.datasets[0].data.shift();
     }
     light_chart.update();
@@ -161,32 +178,26 @@ function onMessageArrived(message) {
 
   else if (message.destinationName == "/home/plant1/sensor/luminosity2" ){
     light_chart.data.datasets[1].data.push(parseFloat(message.payloadString));
-    //water_chart.data.labels.push(xVal)
-    //xVal++;
     if (light_chart.data.datasets[1].data.length > dataLength) {
-      //light_chart.data.labels.shift()
       light_chart.data.datasets[1].data.shift();
     }
+    document.getElementById("light-value").innerHTML =  ((light_chart.data.datasets[0].data[light_chart.data.datasets[0].data.length-1] + light_chart.data.datasets[1].data[light_chart.data.datasets[1].data.length-1])/2).toFixed(2) + "lx";
     light_chart.update();
   }
 
   else if (message.destinationName == "/home/plant1/sensor/temperature" ){
+    document.getElementById("temp-value").innerHTML = parseFloat(message.payloadString).toFixed(2) + "°";
     temperature_chart.data.datasets[0].data.push(parseFloat(message.payloadString));
-    temperature_chart.data.labels.push(xVal)
-    //xVal++;
     if (temperature_chart.data.datasets[0].data.length > dataLength) {
-      temperature_chart.data.labels.shift()
       temperature_chart.data.datasets[0].data.shift();
     }
     temperature_chart.update();
   }
 
   else if (message.destinationName == "/home/plant1/sensor/carbon_monoxyde" ){
+    document.getElementById("carbon-value").innerHTML = (parseFloat(message.payloadString)*100).toFixed(2) + "%";
     gaz_chart.data.datasets[0].data.push(parseFloat(message.payloadString));
-    gaz_chart.data.labels.push(xVal)
-    //xVal++;
     if (gaz_chart.data.datasets[0].data.length > dataLength) {
-      gaz_chart.data.labels.shift()
       gaz_chart.data.datasets[0].data.shift();
     }
     gaz_chart.update();
