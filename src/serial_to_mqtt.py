@@ -10,14 +10,12 @@ import numpy as np
 def convert_temperature(analog_value):
     v = (5.0/1023) * analog_value
     temp = (v - 0.5)*100
-    print(temp)
     return temp
 
 def convert_light(analog_value):
     v = (5.0/1023) * analog_value
     res = (5 - v)/v * 100
     lux = 25000*pow(res, -1.405)
-    print(lux)
     return lux
 
 def convert_gas(analog_value):
@@ -80,9 +78,9 @@ client.connect('iot.eclipse.org')
 while True:
     buffer_light_1.append(450 + 10*random())
     buffer_light_2.append(400 + 10*random())
-    buffer_gas.append(0.8 + 0.01*random())
-    buffer_moisture.append(0.4 + 0.01*random())
-    buffer_temperature.append(12 + 2*random())
+    buffer_gas.append(50 + 50*random())
+    buffer_moisture.append(600 + 5*random())
+    buffer_temperature.append(120 + 15*random())
 
     client.publish('/home/plant1/sensor/moisture', convert_moisture(get_mean_deque(buffer_moisture)))
     client.publish('/home/plant1/sensor/temperature', convert_temperature(get_mean_deque(buffer_temperature)))
