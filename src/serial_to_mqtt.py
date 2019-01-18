@@ -38,7 +38,6 @@ buffer_gas = deque(maxlen=10)
 
 buffer_moisture = deque(maxlen=10)
 
-'''
 ser=serial.Serial('/dev/ttyACM0', 9600)
 client = mqtt.Client('raspy_home')
 client.connect('iot.eclipse.org')
@@ -88,3 +87,4 @@ while True:
     client.publish('/home/plant1/sensor/luminosity2', convert_temperature(get_mean_deque(buffer_light_2)))
     client.publish('/home/plant1/sensor/carbon_monoxyde', convert_gas(get_mean_deque(buffer_gas)))
     time.sleep(1)
+'''
