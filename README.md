@@ -8,6 +8,9 @@ Un serveur va se charge de récupérer les informations émises et de les rendre
 Grâce au protocole MQTT, il est facile de rajouter d'autres capteurs et de communiquer leurs données de plus la mise en place d'un tel système est peu couteux. Le serveur nous permet d'accéder en temps réel et de n'importe où aux constantes de la plante.
 Cependant, les capteurs utilisés sont peu précis et le dispositif une fois installé ne relève pas d'une oeuvre d'art.
 
+## Utilisation
+Pour commencer, il faut tout d'abord téléverser le code .ino sur une carte arduino et de connecter l'ensemble des composants. Ensuite, depuis une raspberry lancer le programme python serial_to_mqtt.py situé dans le src.Il reste plus qu'à lancer le serveur, pour cela il est possible de l'exécuter en local en lançant le programme python app.py situé dans webapp ou en ligne en exportant les dossiers static et templates sur l'hébergeur de votre site web.
+
 ## Photo du système
 ![Photo n°1](./IMG/photo1.jpg "Photo n°1")
 ![Photo n°2](./IMG/photo2.jpg "Photo n°2")
@@ -18,7 +21,7 @@ Cependant, les capteurs utilisés sont peu précis et le dispositif une fois ins
 ## Ressources 
 <!-- ##### Capteur de dioxyde de carbonne  -->
 [Capteur de dioxyde de carbonne 1](http://www.knight-of-pi.org/digital-sensors-and-the-raspberry-pi-with-the-smoke-detector-mq-x-as-example/) 
-[Capteur de dioxyde de carbone 2](http://untitled.es/sensor-gas-mq7-raspberry-pi2/) 
+[Capteur de dioxyde de carbonne 2](http://untitled.es/sensor-gas-mq7-raspberry-pi2/) 
 <!-- ##### Capteur de luminosité -->
 [Capteur de luminosité](https://pimylifeup.com/raspberry-pi-light-sensor/) 
 <!-- ##### Capteur d'humidité -->
