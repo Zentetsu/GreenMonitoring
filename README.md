@@ -17,8 +17,8 @@ Cependant, les capteurs utilisés sont peu précis et le dispositif une fois ins
 
 ## Ressources 
 <!-- ##### Capteur de dioxyde de carbonne  -->
-[Capteur de dioxyde de carbonne 1](http://www.knight-of-pi.org/digital-sensors-and-the-raspberry-pi-with-the-smoke-detector-mq-x-as-example/) 
-[Capteur de dioxyde de carbone 2](http://untitled.es/sensor-gas-mq7-raspberry-pi2/) 
+[Capteur de dioxyde de carbonne 1](http://www.knight-of-pi.org/digital-sensors-and-the-raspberry-pi-with-the-smoke-detector-mq-x-as-example/)
+[Capteur de dioxyde de carbonne 2](http://untitled.es/sensor-gas-mq7-raspberry-pi2/) 
 <!-- ##### Capteur de luminosité -->
 [Capteur de luminosité](https://pimylifeup.com/raspberry-pi-light-sensor/) 
 <!-- ##### Capteur d'humidité -->
