@@ -15,6 +15,7 @@ Il reste plus qu'à lancer le serveur, pour cela il est possible de l'exécuter 
 ## Photo du système
 ![Photo n°1](./IMG/photo1.jpg "Photo n°1")
 ![Photo n°2](./IMG/photo2.jpg "Photo n°2")
+![Photo n°3](./IMG/app.png "screenshot de l'application")
 
 ## Schéma complet du système
 ![Schéma complet](./IMG/Schema_Complet.png "Schéma complet") 
