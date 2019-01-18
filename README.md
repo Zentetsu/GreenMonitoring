@@ -20,7 +20,7 @@ Pour commencer, il faut tout d'abord téléverser le code .ino sur une carte ard
 
 ## Ressources 
 <!-- ##### Capteur de dioxyde de carbonne  -->
-[Capteur de dioxyde de carbonne 1](http://www.knight-of-pi.org/digital-sensors-and-the-raspberry-pi-with-the-smoke-detector-mq-x-as-example/) 
+[Capteur de dioxyde de carbonne 1](http://www.knight-of-pi.org/digital-sensors-and-the-raspberry-pi-with-the-smoke-detector-mq-x-as-example/)
 [Capteur de dioxyde de carbonne 2](http://untitled.es/sensor-gas-mq7-raspberry-pi2/) 
 <!-- ##### Capteur de luminosité -->
 [Capteur de luminosité](https://pimylifeup.com/raspberry-pi-light-sensor/) 
