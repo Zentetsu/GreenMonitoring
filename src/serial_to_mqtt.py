@@ -15,7 +15,7 @@ def convert_temperature(analog_value):
 def convert_light(analog_value):
     v = (5.0/1023) * analog_value
     res = (5 - v)/v * 100
-    lux = 25000*pow(res, -1.405)
+    lux = 25000*pow(res, -1.405) + 50
     return lux
 
 def convert_gas(analog_value):
