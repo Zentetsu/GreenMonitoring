@@ -1,5 +1,9 @@
 ![GreenMonitoring](./IMG/Logo_Green_monitoring.png "GreenMonitoring") ![Schéma simple](./IMG/Schema_Leger.png "Schéma simple")
 
+## Video
+Video associée au projet:
+https://youtu.be/5a4Z_AVCpKY
+
 ## Description du système
 Le système de monitoring est constitué de plusieurs capteurs, deux capteurs de luminosité, un capteur de monoxyde de carbone, un capteur de température et un capteur d'humidité. L'ensemble de ces capteurs est disposé autour et dans le pot de la plante et relié à un arduino afin de réaliser les différentes mesures, puis celles-ci sont émises via le protocole MQTT qui se charge de diffuser les informations.
 Un serveur va se charger de récupérer les informations émises et de rendre accessibles les différentes mesures depuis internet. Il est possible d'observer les besoins de la plante via l'évolution de différentes courbes.
